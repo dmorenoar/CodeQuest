@@ -1,7 +1,5 @@
 # ⚔️ # CodeQuest: L’aventura del programador/a de videojocs
 
-# 🧙‍♂️ Projecte: El Camí del Mag Aprenent
-
 ## Chapter 1. El camí del mag aprenent 🧙‍♀️
 
 Has estat admès a l’Acadèmia d’Arcanistes, però abans de començar necessites entrenar el teu poder màgic.
