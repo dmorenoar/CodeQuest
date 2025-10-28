@@ -1,5 +1,18 @@
 # ⚔️ # CodeQuest: L’aventura del programador/a de videojocs
 
+# ⚠️ Anotació
+
+- Tots els codis han d’incorporar **control d’errors**.  
+- La **codificació ha de ser en anglès** (missatges, comentaris, variables, constants, etc.).  
+- Cada capítol ha de ser una **branca** de l’estil:
+  - `chapter/trainwizard`
+  - `chapter/checkdungeon`
+  - `chapter/lootthemine`
+- Tots els *chapters* han de definir el **joc de proves** per després fer-lo servir al *Debug*.  
+- El **repositori** ha d’incloure un `README.md` amb el **joc de proves** i la **descripció del projecte**.  
+- Heu de gestionar la **creació d’issues** per cada *chapter*.  
+- Podeu consultar com **tancar o gestionar Pull Requests (PRs)** segons la documentació de GitHub.
+
 ## Chapter 1. El camí del mag aprenent 🧙‍♀️
 
 Has estat admès a l’Acadèmia d’Arcanistes, però abans de començar necessites entrenar el teu poder màgic.
