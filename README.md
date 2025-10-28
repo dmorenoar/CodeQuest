@@ -1,4 +1,4 @@
-⚔️ # CodeQuest: L’aventura del programador/a de videojocs
+# ⚔️ # CodeQuest: L’aventura del programador/a de videojocs
 
 # 🧙‍♂️ Projecte: El Camí del Mag Aprenent
 
