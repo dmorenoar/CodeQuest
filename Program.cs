@@ -1,6 +1,6 @@
 ﻿using System;
 
-class Program
+public class Program
 {
     static void Main()
     {
@@ -50,4 +50,5 @@ class Program
 
         } while (op != 0);
     }
+
 }
