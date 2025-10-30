@@ -11,8 +11,9 @@ public class Program
         const string MenuOptionExit = "0. Exit game";
         const string MenuPrompt = "Choose an option (1-3) - (0) to exit: ";
         const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
+        const string ExitMsg = "Program exited successfully";
 
-        int op = 0;
+        int chosenOption = 0;
         bool validInput;
 
         do
@@ -28,7 +29,7 @@ public class Program
 
             try
             {
-                op = Convert.ToInt32(Console.ReadLine());
+                chosenOption = Convert.ToInt32(Console.ReadLine());
 
             }
             catch (FormatException)
@@ -44,11 +45,19 @@ public class Program
 
             if(validInput)
             {
-                Console.WriteLine(op);
+                Console.WriteLine(chosenOption);
             }
 
 
-        } while (op != 0);
+        } while (chosenOption != 0);
+        switch (chosenOption)
+        {
+            case 1: 
+                break;
+            default:
+                Console.WriteLine(ExitMsg);
+                break;
+        }
     }
 
 }
