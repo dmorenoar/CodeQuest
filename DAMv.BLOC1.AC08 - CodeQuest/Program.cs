@@ -31,7 +31,7 @@ public class Program
         const int LimitLevelOne = 20, LimitLevelTwo = 30, LimitLevelThree = 35, LimitLevelFour = 40;
 
         int op = -1;
-        string originalName =" ", fancyName= " ";
+        string originalName = " ", fancyName= " ";
         bool validInput = true;
         int level = 1, power = 0;
 
@@ -67,10 +67,7 @@ public class Program
                 Console.WriteLine(InputErrorMessage);
                 validInput = false;
             }
-            if (validInput)
-            {
-                Console.WriteLine(op);
-            }
+
             switch (op)
             {  
                 case 0:
