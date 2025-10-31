@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Globalization;
 using System.Timers;
 
 public class Program
@@ -7,7 +8,9 @@ public class Program
     public static void Main()
     {
         const string InputName = "Input your wizard name";
-        const string InvalidName = "Invalid name, only normal characters";
+        const string MsgWizardName = "Your wizard name is {0}";
+        const string MsgWizardLevel = "Your level is {0}";
+
         const string MenuTitle = "===== MAIN MENU - CODEQUEST =====";
         const string MenuOption1 = "1. Train your wizard";
         const string MenuOption2 = "2. Check the dungeon";
@@ -15,12 +18,21 @@ public class Program
         const string MenuOptionExit = "0. Exit game";
         const string MenuPrompt = "Choose an option (1-3) - (0) to exit: ";
         const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
-        const string Error = "Error";
+        const string MsgExitGame = "Exiting the game ...";
+
+        const string MsgDayInfo = "Dia {0} -> {1} you already meditated {2} hours and now your power is {3}!";
+        const string MsgPower1 = "You can not even wield a wand";
+        const string MsgPower2 = "You are still clumsy, yet you become stronger. Try again!!!";
+        const string MsgPower3 = "You may be a magic winds caster, good job";
+        const string MsgPower4 = "You can burn down to ashes a whole room, congrtulation!!!";
+        const string MsgPower5 = "You reached the maximum power level anyone can reach, congratulations :)";
+
         const int TrainDays = 5;
-        const int MaxPower = 50;
+        const int LimitLevelOne = 20, LimitLevelTwo = 30, LimitLevelThree = 35, LimitLevelFour = 40;
+
         int op = -1;
-        string originalName =" ", fancyName = " ";
-        bool validInput = true ;
+        string originalName =" ", fancyName= " ";
+        bool validInput = true;
         int level = 1, power = 0;
 
 
@@ -28,8 +40,8 @@ public class Program
         originalName = Console.ReadLine();
 
 
-        Console.WriteLine("Your wizard name is "+ originalName);
-        Console.WriteLine("Your level is "+ level);
+        Console.WriteLine(MsgWizardName, originalName);
+        Console.WriteLine(MsgWizardLevel, level);
 
         do
         {
@@ -62,34 +74,39 @@ public class Program
             switch (op)
             {  
                 case 0:
-                    Console.WriteLine("Exiting the game ...");
+                    Console.WriteLine(MsgExitGame);
                     break;
                 case 1:
-                    int randomPower = rnd.Next(1, 11);
                     for (int day = 1; day <= TrainDays; day++)
                     {
-                        int random = rnd.Next(1, 11);
-                        power += random;
-                        Console.WriteLine("Dia "+day+"-> "+originalName+" you already meditated 10 hours and now your power is "+power+"!");
+
+                        int dayHoursTrain = rnd.Next(1, 11);
+                        power += dayHoursTrain;
+                        Console.WriteLine(MsgDayInfo, day, originalName, dayHoursTrain, power);
                     }
-                    if (power < 20)
+                    if (power < LimitLevelOne)
                     {
-                        Console.WriteLine("You are still clumsy, yet you become stronger. Try again!!!");
+                        Console.WriteLine(MsgPower1);
+                        fancyName = " the Elantrine";
+                    }
+                    else if (power >= LimitLevelOne && power < LimitLevelTwo)
+                    {
+                        Console.WriteLine(MsgPower2);
                         fancyName = " the Bugman";
                     }
-                    else if(power < 30 && power >= 20)
+                    else if(power >= LimitLevelTwo && power < LimitLevelThree)
                     {
-                        Console.WriteLine("You may be a magic winds caster, good job");
+                        Console.WriteLine(MsgPower3);
                         fancyName = " Nullpointer";
                     }
-                    else if(power > 35 && power < 40)
+                    else if(power >= LimitLevelThree && power < LimitLevelFour)
                     {
-                        Console.WriteLine("You can burn down to ashes a whole room, congrtulation!!!");
+                        Console.WriteLine(MsgPower4);
                         fancyName = " the Burner";
                     }
-                    else if(power >= 47)
+                    else if(power >= LimitLevelFour)
                     {
-                        Console.WriteLine("you reached the maximum power level anyone can reach, congratulations :)");
+                        Console.WriteLine(MsgPower5);
                         fancyName = " the gray";
                     }
                     
