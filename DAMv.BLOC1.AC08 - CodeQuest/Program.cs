@@ -7,10 +7,12 @@ public class Program
 {
     public static void Main()
     {
+        //Init consts
         const string InputName = "Input your wizard name";
         const string MsgWizardName = "Your wizard name is {0}";
         const string MsgWizardLevel = "Your level is {0}";
 
+        //Option consts
         const string MenuTitle = "===== MAIN MENU - CODEQUEST =====";
         const string MenuOption1 = "1. Train your wizard";
         const string MenuOption2 = "2. Check the dungeon";
@@ -20,24 +22,26 @@ public class Program
         const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
         const string MsgExitGame = "Exiting the game ...";
 
+        //Chapter 1 consts
         const string MsgDayInfo = "Dia {0} -> {1} you already meditated {2} hours and now your power is {3}!";
         const string MsgPower1 = "You can not even wield a wand";
         const string MsgPower2 = "You are still clumsy, yet you become stronger. Try again!!!";
         const string MsgPower3 = "You may be a magic winds caster, good job";
         const string MsgPower4 = "You can burn down to ashes a whole room, congrtulation!!!";
         const string MsgPower5 = "You reached the maximum power level anyone can reach, congratulations :)";
-
         const int TrainDays = 5;
         const int LimitLevelOne = 20, LimitLevelTwo = 30, LimitLevelThree = 35, LimitLevelFour = 40;
 
+        //Chapter 2 consts
         const string MsgInputDoorCode = "Introduce the door code (1-5)";
         const string MsgIncorrectDoorCode = "Incorrect door code";
         const string MsgNoDoorAttemps = "The dragon has noticed you and you have been banned from server by him";
         const string MsgCorrectDoorCode = "The dragon respect you, You unlocked the door";
         const string MsgLastUnlock = "You have unlocked the final level. Get prepared for the battle";
         const string MsgInvalidCode = "Invalid input. Enter a number between 1 and 5";
-
         const int LastDoor = 3, MaxDoorAttemps = 3;
+
+
         int op = -1;
         string originalName = " ", fancyName= " ";
         int level = 1, power = 0;
@@ -79,10 +83,10 @@ public class Program
                     Console.WriteLine(MsgExitGame);
                     break;
                 case 1:
+                    int dayHoursTrain = rnd.Next(1, 11);
+
                     for (int day = 1; day <= TrainDays; day++)
                     {
-
-                        int dayHoursTrain = rnd.Next(1, 11);
                         power += dayHoursTrain;
                         Console.WriteLine(MsgDayInfo, day, originalName, dayHoursTrain, power);
                     }
@@ -111,17 +115,15 @@ public class Program
                         Console.WriteLine(MsgPower5);
                         fancyName = " the gray";
                     }
-                    
                     break;
                 case 2:
+                    int doorCode = rnd.Next(1, 6);
                     for (int door = 1; door <= LastDoor; door++)
                     {
                         int attemps = 0;
                         bool correctCode = false;
-                        int doorCode = rnd.Next(1, 6);
                         do
                         {
-                            //input msg and check if valid
                             Console.WriteLine(MsgInputDoorCode);
                             try
                             {
@@ -136,7 +138,6 @@ public class Program
                                 Console.WriteLine(MsgInvalidCode);
                             }
 
-                            //check if correct
                             if (doorInput == doorCode)
                             {
                                 Console.WriteLine(MsgCorrectDoorCode);
