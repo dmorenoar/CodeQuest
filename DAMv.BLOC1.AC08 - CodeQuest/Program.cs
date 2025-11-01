@@ -30,11 +30,18 @@ public class Program
         const int TrainDays = 5;
         const int LimitLevelOne = 20, LimitLevelTwo = 30, LimitLevelThree = 35, LimitLevelFour = 40;
 
+        const string MsgInputDoorCode = "Introduce the door code (1-5)";
+        const string MsgIncorrectDoorCode = "Incorrect door code";
+        const string MsgNoDoorAttemps = "The dragon has noticed you and you have been banned from server by him";
+        const string MsgCorrectDoorCode = "The dragon respect you, You unlocked the door";
+        const string MsgLastUnlock = "You have unlocked the final level. Get prepared for the battle";
+        const string MsgInvalidCode = "Invalid input. Enter a number between 1 and 5";
+
+        const int LastDoor = 3, MaxDoorAttemps = 3;
         int op = -1;
         string originalName = " ", fancyName= " ";
-        bool validInput = true;
         int level = 1, power = 0;
-
+        int doorInput = -1;
 
         Console.WriteLine(InputName);
         originalName = Console.ReadLine();
@@ -60,12 +67,10 @@ public class Program
             catch (FormatException)
             {
                 Console.WriteLine(InputErrorMessage);
-                validInput = false;
             }
             catch (Exception)
             {
                 Console.WriteLine(InputErrorMessage);
-                validInput = false;
             }
 
             switch (op)
@@ -109,11 +114,55 @@ public class Program
                     
                     break;
                 case 2:
+                    for (int door = 1; door <= LastDoor; door++)
+                    {
+                        int attemps = 0;
+                        bool correctCode = false;
+                        int doorCode = rnd.Next(1, 6);
+                        do
+                        {
+                            //input msg and check if valid
+                            Console.WriteLine(MsgInputDoorCode);
+                            try
+                            {
+                                doorInput = Convert.ToInt32(Console.ReadLine());
+                            }
+                            catch (FormatException)
+                            {
+                                Console.WriteLine(MsgInvalidCode);
+                            }
+                            catch (Exception)
+                            {
+                                Console.WriteLine(MsgInvalidCode);
+                            }
+
+                            //check if correct
+                            if (doorInput == doorCode)
+                            {
+                                Console.WriteLine(MsgCorrectDoorCode);
+                                correctCode = true;
+                            }
+                            else
+                            {
+                                Console.WriteLine(MsgIncorrectDoorCode);
+                                attemps++;
+                            }
+                        } while (attemps < MaxDoorAttemps && !correctCode);
+
+                        if (!correctCode)
+                        {
+                            Console.WriteLine(MsgNoDoorAttemps);
+                            door = LastDoor + 1;
+                            op = 0;
+                        }
+
+                        if (door == LastDoor)
+                        {
+                            Console.WriteLine(MsgLastUnlock);
+                        }
+                    }
                     break;
                 case 3:
-                    break;
-                default:
-                    Console.WriteLine(InputErrorMessage);
                     break;
             }
 
