@@ -15,16 +15,21 @@ Dependiendo del resultado, muestra un mensaje distinto con el nivel alcanzado.
 
 Tambien hice uso Regex  para asegurarme de que el nombre solo contenga letras.
 
-## Juego de pruebas
-### Iteracion : 1 
+
+## Juego de pruebas - Caso normal
+#### Iteracion : 1 
 ![Pruebas1](./Resources/debug1.png)
-### Iteracion : 2
+#### Iteracion : 2
 ![Pruebas2](./Resources/debug2.png)
-### Iteracion : 3
+#### Iteracion : 3
 ![Pruebas3](./Resources/debug3.png)
-### Iteracion : 4
+#### Iteracion : 4
 ![Pruebas4](./Resources/debug4.png)
-### Iteracion : 5
+#### Iteracion : 5
 ![Pruebas5](./Resources/debug5.png)
-### Iteracion : 6    
+#### Iteracion : 6    
 ![Pruebas6](./Resources/debug6.png)
+
+## Juego de pruebas - Caso de errror 
+![Pruebas1](./Resources/casoerror.png)
+
