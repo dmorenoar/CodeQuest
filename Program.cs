@@ -59,11 +59,103 @@ public class Program
 
                         Title : ";
 
+        const string Character2Msg = @"
+================================================== CHAPTER 2 - Check the dungeon ===========================================
     
+        You have entered the dungeon. Three doors block your path, and only by correctly deciphering
+        their codes will you be able to escape alive; if you fail, Dragon Ramon will expel you from
+        the server.
+
+============================================================================================================================
+            ";
+        const string Character2Doors = @"
+================================================== CHAPTER 2 - Check the dungeon ===========================================
+
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▒▓▒▓▓▒▓▒▓▒▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▒▓▒▓▓▒▓▒▓▒▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▒▓▒▓▓▒▓▒▓▒▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓▓▒▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓▓▒▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓▓▒▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓1▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓2▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓3▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒
+          ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒    ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒
+
+=============================================================================================================================
+";
+        const string Character2Game = @"
+================================================== CHAPTER 2 - Check the dungeon ===========================================
+
+                                                ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒        
+                                                ▒▒▒▒▒▒▒▓▓▓▓▒▓▒▓▓▒▓▒▓▒▓▓▓▓▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▒▓▓▓▒▓▓▒▒▒▒▒▒▒         
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒         
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓{0}▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒         
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓██▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▓▒▒▒▒▒▒▒          
+                                                ▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒▒     
+
+        Attemps : {1}
+
+        Enter the correct code to unlock the door: ";
+
+        const string MsgErrorName = "Error: Your name is not in the correct format.";
+        const string FinalDoor = @"
+=============================================================================================================================
+
+                                            You have unlocked the final level. 
+                        
+                                                    Prepare for battle!.
+
+=============================================================================================================================";
+        const string MsgOkDragon = "        The dragon respects you. You've unlocked the next level.!";
+        const string MsgKoDragon = "        The dragon has detected your presence and has expelled you from the server.!";
+        const string MsgErrorNumber = "        Error : You have entered an incorrect number.!";
+        const string MsgFinalOkChapter2 = @"       
+=============================================================================================================================
+
+                                    You have failed to decipher the dungeon's codes.
+
+                                       The dragon's roar echoes in the darkness...
+
+                                             Your adventure ends here.
+
+=============================================================================================================================
+";
+        const string MsgFinalKoChapter2 = @"       
+=============================================================================================================================
+
+                                      You have managed to decipher the dungeon codes.
+
+                                            You have escaped safe and sound. 
+
+                                                Your adventure continues.
+ 
+=============================================================================================================================
+";
+
+
         const int DaysMax = 5; 
 
         int op = 0;
+        int doorRandom;
         bool validInput;
+        int inputNum = 0;
         string inputName;
         int level = 1;
         int powerRandom;
@@ -71,9 +163,12 @@ public class Program
         int hourRandom = 0;
         bool validateName = true;
         var random = new Random();
+        
 
         do
         {
+            Console.Clear();
+            Console.ForegroundColor = ConsoleColor.Gray;
             Console.WriteLine(MenuTitle);
             Console.WriteLine(MenuOption1);
             Console.WriteLine(MenuOption2);
@@ -107,7 +202,8 @@ public class Program
                 {
                     case 1:
                         Console.Write(MsgName);
-                        inputName = Console.ReadLine();                        
+                        inputName = Console.ReadLine();
+                       
                         validateName =  Regex.IsMatch(inputName, @"^[a-zA-Z]+$");
 
                         if (validateName)
@@ -168,11 +264,71 @@ public class Program
                         }
                         else
                         {
-                            Console.WriteLine("Error: Your name is not in the correct format");
+                            Console.WriteLine(MsgErrorName);
+                            Thread.Sleep(1500);
                         }
-                        
+
                         break;
                     case 2:
+                        Console.Clear();
+                        Console.WriteLine(Character2Msg);
+                        Console.WriteLine(Character2Doors);
+                        for (int i = 1; i < 3+1 ; i++)
+                        {
+                            bool chapter2Validate = true;
+
+                            if (i == 3 && chapter2Validate)
+                            {
+                                Console.WriteLine(FinalDoor);
+                            }
+                            doorRandom = random.Next(1, 5);
+                            
+                            for (int j = 0; j < 3; j++)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Gray;
+
+                                Console.Write(Character2Game, i,3-j);
+                                bool numValidate = int.TryParse(Console.ReadLine(), out inputNum);
+                                if (numValidate)
+                                {
+                                    if (inputNum == doorRandom)
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Green;
+                                        Console.WriteLine(Space);
+                                        Console.WriteLine(MsgOkDragon);
+                                        j = 4;
+                                        chapter2Validate = true;
+                                    }
+                                    else
+                                    {
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.WriteLine(Space);
+                                        Console.WriteLine(MsgKoDragon);
+                                        chapter2Validate = false;
+                                    }
+                                }
+                                else
+                                {
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine(MsgErrorNumber);
+                                }
+                                
+                            }
+                            if (!chapter2Validate)
+                            {
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine(LineSeparator);
+                                Console.WriteLine(MsgFinalOkChapter2);
+                                i = 4;
+                                Console.WriteLine(LineSeparator);
+                            }
+                            if(chapter2Validate && i == 3)
+                            {
+                                Console.WriteLine(MsgFinalKoChapter2);
+                            }
+                            Thread.Sleep(3500);
+
+                        }
                         break;
                     case 3:
                         break;
