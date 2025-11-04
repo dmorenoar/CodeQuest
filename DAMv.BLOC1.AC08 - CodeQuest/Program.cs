@@ -13,13 +13,14 @@ public class Program
         const string MsgWizardLevel = "Your level is {0}";
 
         //Option consts
+        const int MinOP = 1, MaxOp = 3;
         const string MenuTitle = "===== MAIN MENU - CODEQUEST =====";
         const string MenuOption1 = "1. Train your wizard";
         const string MenuOption2 = "2. Check the dungeon";
         const string MenuOption3 = "3. Loot the mine";
         const string MenuOptionExit = "0. Exit game";
         const string MenuPrompt = "Choose an option (1-3) - (0) to exit: ";
-        const string InputErrorMessage = "Invalid input. Please enter a number between 0 and 3.";
+        const string InputErrorMessage = "Invalid input. Please enter a number between {0} and {1}.";
         const string MsgExitGame = "Exiting the game ...";
 
         //Chapter 1 consts
@@ -33,14 +34,21 @@ public class Program
         const int LimitLevelOne = 20, LimitLevelTwo = 30, LimitLevelThree = 35, LimitLevelFour = 40;
 
         //Chapter 2 consts
+        const int MinDoor = 1, MaxDoor = 5;
         const string MsgInputDoorCode = "Introduce the door code (1-5)";
         const string MsgIncorrectDoorCode = "Incorrect door code";
         const string MsgNoDoorAttemps = "The dragon has noticed you and you have been banned from server by him";
         const string MsgCorrectDoorCode = "The dragon respect you, You unlocked the door";
         const string MsgLastUnlock = "You have unlocked the final level. Get prepared for the battle";
-        const string MsgInvalidCode = "Invalid input. Enter a number between 1 and 5";
+
         const int LastDoor = 3, MaxDoorAttemps = 3;
 
+        //Chapter 3 consts
+        const string MsgExcavation = "Excavation {0}: you mined {1} bits";
+        const string MsgEnoughLoot = "You have enugh bits, you are rich";
+        const string MsgNotEnoughLoot = "You have not enough bits, you are poor";
+        const int EnoughBits = 200, MaxExcavation = 5, MinBits = 5, MaxBits = 50;
+        const int ProbFail = 5;
 
         int op = -1;
         string originalName = " ", fancyName= " ";
@@ -70,7 +78,7 @@ public class Program
             }
             catch (FormatException)
             {
-                Console.WriteLine(InputErrorMessage);
+                Console.WriteLine(InputErrorMessage, MinOP, MaxOp);
             }
             catch (Exception)
             {
@@ -117,7 +125,7 @@ public class Program
                     }
                     break;
                 case 2:
-                    int doorCode = rnd.Next(1, 6);
+                    int doorCode = rnd.Next(MinDoor, (MaxDoor + 1));
                     for (int door = 1; door <= LastDoor; door++)
                     {
                         int attemps = 0;
@@ -131,11 +139,11 @@ public class Program
                             }
                             catch (FormatException)
                             {
-                                Console.WriteLine(MsgInvalidCode);
+                                Console.WriteLine(InputErrorMessage,MinDoor,MaxDoor);
                             }
                             catch (Exception)
                             {
-                                Console.WriteLine(MsgInvalidCode);
+                                Console.WriteLine(InputErrorMessage,MinDoor,MaxDoor);
                             }
 
                             if (doorInput == doorCode)
@@ -164,6 +172,23 @@ public class Program
                     }
                     break;
                 case 3:
+                    int totalBits = 0;
+                    for (int excavation = 1; excavation <= MaxExcavation; excavation++)
+                    {
+                        int probYouMined = rnd.Next(1,101);
+                        if (probYouMined <= ProbFail)
+                            Console.WriteLine(MsgExcavation,excavation,0);
+                        else
+                        {
+                            int bitsMined = rnd.Next(MinBits, MaxBits);
+                            totalBits += bitsMined;
+                            Console.WriteLine(MsgExcavation, excavation, bitsMined);
+                        }
+                    }
+                    if (totalBits > EnoughBits)
+                        Console.WriteLine(MsgEnoughLoot);
+                    else
+                        Console.WriteLine(MsgNotEnoughLoot);
                     break;
             }
 
