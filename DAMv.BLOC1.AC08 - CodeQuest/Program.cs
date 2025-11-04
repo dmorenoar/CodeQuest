@@ -24,31 +24,32 @@ public class Program
         const string MsgExitGame = "Exiting the game ...";
 
         //Chapter 1 consts
+        const int TrainDays = 5;
+        const int LimitLevelOne = 20, LimitLevelTwo = 30, LimitLevelThree = 35, LimitLevelFour = 40;
         const string MsgDayInfo = "Dia {0} -> {1} you already meditated {2} hours and now your power is {3}!";
         const string MsgPower1 = "You can not even wield a wand";
         const string MsgPower2 = "You are still clumsy, yet you become stronger. Try again!!!";
         const string MsgPower3 = "You may be a magic winds caster, good job";
         const string MsgPower4 = "You can burn down to ashes a whole room, congrtulation!!!";
         const string MsgPower5 = "You reached the maximum power level anyone can reach, congratulations :)";
-        const int TrainDays = 5;
-        const int LimitLevelOne = 20, LimitLevelTwo = 30, LimitLevelThree = 35, LimitLevelFour = 40;
+
 
         //Chapter 2 consts
         const int MinDoor = 1, MaxDoor = 5;
+        const int LastDoor = 3, MaxDoorAttemps = 3;
         const string MsgInputDoorCode = "Introduce the door code (1-5)";
         const string MsgIncorrectDoorCode = "Incorrect door code";
         const string MsgNoDoorAttemps = "The dragon has noticed you and you have been banned from server by him";
         const string MsgCorrectDoorCode = "The dragon respect you, You unlocked the door";
         const string MsgLastUnlock = "You have unlocked the final level. Get prepared for the battle";
 
-        const int LastDoor = 3, MaxDoorAttemps = 3;
 
         //Chapter 3 consts
+        const int EnoughBits = 200, MaxExcavation = 5, MinBits = 5, MaxBits = 50;
+        const int ProbFail = 5;
         const string MsgExcavation = "Excavation {0}: you mined {1} bits";
         const string MsgEnoughLoot = "You have enugh bits, you are rich";
         const string MsgNotEnoughLoot = "You have not enough bits, you are poor";
-        const int EnoughBits = 200, MaxExcavation = 5, MinBits = 5, MaxBits = 50;
-        const int ProbFail = 5;
 
         int op = -1;
         string originalName = " ", fancyName= " ";
@@ -175,9 +176,9 @@ public class Program
                     int totalBits = 0;
                     for (int excavation = 1; excavation <= MaxExcavation; excavation++)
                     {
-                        int probYouMined = rnd.Next(1,101);
+                        int probYouMined = rnd.Next(1, 101);
                         if (probYouMined <= ProbFail)
-                            Console.WriteLine(MsgExcavation,excavation,0);
+                            Console.WriteLine(MsgExcavation, excavation, 0);
                         else
                         {
                             int bitsMined = rnd.Next(MinBits, MaxBits);
