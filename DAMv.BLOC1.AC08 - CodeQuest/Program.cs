@@ -140,13 +140,12 @@ public class Program
                             }
                             catch (FormatException)
                             {
-                                Console.WriteLine(InputErrorMessage,MinDoor,MaxDoor);
+                                Console.WriteLine(InputErrorMessage, MinDoor, MaxDoor);
                             }
                             catch (Exception)
                             {
-                                Console.WriteLine(InputErrorMessage,MinDoor,MaxDoor);
+                                Console.WriteLine(InputErrorMessage, MinDoor, MaxDoor);
                             }
-
                             if (doorInput == doorCode)
                             {
                                 Console.WriteLine(MsgCorrectDoorCode);
@@ -178,7 +177,9 @@ public class Program
                     {
                         int probYouMined = rnd.Next(1, 101);
                         if (probYouMined <= ProbFail)
+                        {
                             Console.WriteLine(MsgExcavation, excavation, 0);
+                        }
                         else
                         {
                             int bitsMined = rnd.Next(MinBits, MaxBits);
@@ -186,10 +187,7 @@ public class Program
                             Console.WriteLine(MsgExcavation, excavation, bitsMined);
                         }
                     }
-                    if (totalBits > EnoughBits)
-                        Console.WriteLine(MsgEnoughLoot);
-                    else
-                        Console.WriteLine(MsgNotEnoughLoot);
+                    Console.WriteLine(totalBits > EnoughBits ? MsgEnoughLoot : MsgNotEnoughLoot);
                     break;
             }
 
