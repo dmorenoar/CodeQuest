@@ -148,6 +148,73 @@ public class Program
  
 =============================================================================================================================
 ";
+        const string Chapter3Msg = @"
+==================================================== CHAPTER 3 - Loot the mine  =============================================
+
+                         __    __     __     __  __      ______     __   __     _____     ______    
+                        /\  -./  \   /\ \   /\ -.\  \   /\  __ \   /\  -.\ \   /\  _ -.  /\  __ \   
+                        \ \ \-./\ \  \ \ \  \ \ \-.  \  \ \  __ \  \ \ \-.  \  \ \ \/\ \ \ \ \/\ \  
+                         \ \_\ \ \_\  \ \_\  \ \_\\ \_\  \ \_\ \_\  \ \_\\\ _\  \ \____-  \ \_____\ 
+                          \/_/  \/_/   \/_/   \/_/ \/_/   \/_/\/_/   \/_/ \/_/   \/____/   \/_____/ 
+                                                                            
+                                                                            "; 
+        const string Chapter3MineMsg = @"
+==================================================== CHAPTER 3 - Loot the mine  =============================================
+
+                                                                
+                                                                    ██▓█  █                          
+                                                        ██▓█▓▓▓▓▓▓████ ▒███  █                        
+                                                       ██▒    ░░░▒▒▒░▒      █▓█▒                       
+                                                     ██████████████▓█ ░░░ █░░░▒▓█▓█                   
+                                                                  ▒    ░██▓▒░░░░▒▓▓█                
+                                                                  ▓███▒█   ░████▓▒░░▒█              
+                                                                  █▒▒▒▓           ██▒▓▒            
+                                                                 ▒█▒▒▓█              █▓           
+                                                                  ▓▒▒▒                          
+                                                                 █░▒▓█                              
+                                                                ░▓░▒█                                                              
+                                                               ▓▓▓▓█                          
+                                                              ░█   █                            
+                                                              █░░░▓█                                                    
+                                                            ░█░░ ▓▒                                            
+                                                            ▓   ▓█                        
+                                                            ░████░                          
+
+                No.Excavation : {0}
+
+                Mined bitcoins: +{1}
+
+                Total bitcoins: {2}
+
+=============================================================================================================================";
+        const string Chapter3MsgBadLuck = @"
+=============================================================================================================================
+
+                                            Today is not your lucky day.
+
+                                                 You found 0 bits.
+
+=============================================================================================================================
+";
+        const string Chapter3MsgOk = @"
+=============================================================================================================================
+
+
+                                   You've unlocked the gold GPU! Your spells now run at 120 FPS!
+                                                
+
+=============================================================================================================================
+";
+        const string Chapter3MsgKo = @"
+=============================================================================================================================
+
+
+                            Your magic card is still integrated. It's time to defeat another dragon!
+                                                
+
+=============================================================================================================================
+";
+        const string MsgOpIncorrect = "Select the correct option.";
 
 
         const int DaysMax = 5; 
@@ -162,6 +229,9 @@ public class Program
         int powerCharacter = 0;
         int hourRandom = 0;
         bool validateName = true;
+        int bitcoinCharacter = 0;
+        int bitcoinsRandom;
+
         var random = new Random();
         
 
@@ -331,10 +401,50 @@ public class Program
                         }
                         break;
                     case 3:
+                        Console.Clear();
+
+                        Console.WriteLine(Chapter3Msg);
+
+                        for (int i = 1;  i < 5+1; i++)
+                        {
+
+                            bitcoinsRandom = random.Next(0, 50);
+                           
+                            if (bitcoinsRandom < 5)
+                            {
+                                Console.Clear();
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                bitcoinsRandom = 0;
+                                Console.WriteLine(Chapter3MsgBadLuck);
+                            }
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            bitcoinCharacter = bitcoinCharacter + bitcoinsRandom;
+                            Console.WriteLine(Chapter3MineMsg, i,bitcoinsRandom , bitcoinCharacter);
+                            Thread.Sleep(3500);
+                            Console.Clear();
+
+
+                        }
+                        if (bitcoinCharacter > 200)
+                        {
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            Console.WriteLine(Chapter3MsgOk);
+                        }
+                        else
+                        {
+                            Console.ForegroundColor = ConsoleColor.Red;
+                            Console.WriteLine(Chapter3MsgKo);
+                        }
+                        Thread.Sleep(4500);
                         break;
+                    default:
+
+                        Console.WriteLine(MsgOpIncorrect);
+                        Thread.Sleep(1500);
+
+                        break;                
                 }
             }
-
 
         } while (op != 0);
     }

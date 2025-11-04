@@ -77,4 +77,26 @@ Pero si logro abrir las tres puertas, aparece la puerta final, y con ella, el pa
 #### Iteracion : 8    
 ![Pruebas6](./Resources/Chapter2limit8.png)
 #### Iteracion : 9    
-![Pruebas6](./Resources/Chapter2limit9.png)
+![Pruebas6](./Resources/Chapter2Limit9.png)
+
+## Chapter 3. Lottery the loot 💰
+Después de derrotar al dragón, el mago descubre una mina llena de bitcoins mágicos. Con su pico encantado, comienza a excavar en busca de tesoros digitales ocultos.
+
+El juego comienza mostrando el mensaje de introducción (Chapter3Msg) y, mediante un bucle for, el personaje realiza cinco excavaciones consecutivas. En cada intento, se genera una cantidad aleatoria de bitcoins (entre 0 y 50).
+
+Si el número obtenido es menor que 5, el mago sufre mala suerte: no encuentra nada y aparece un mensaje (Chapter3MsgBadLuck).
+En caso contrario, el botín se suma al total y el programa muestra el número de excavación, la cantidad obtenida y los bitcoins acumulados (Chapter3MineMsg).
+
+Tras cada ronda, hay una breve pausa que simula el tiempo de minería antes de continuar con la siguiente excavación.
+
+## Juego de pruebas - Caso normal
+#### Iteracion : 1 
+![Pruebas1](./Resources/Chapter3normal.png)
+#### Iteracion : 2
+![Pruebas2](./Resources/Chapter3normal2.png)
+#### Iteracion : 3
+![Pruebas3](./Resources/Chapter3normal3.png)
+#### Iteracion : 4
+![Pruebas3](./Resources/Chapter3normal4.png)
+#### Iteracion : 5
+![Pruebas3](./Resources/Chapter3normal5.png)
